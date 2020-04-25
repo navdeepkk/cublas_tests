@@ -15,7 +15,7 @@ The .qdrep files are also present which can be direclty opened using the profile
 
 To run the files 3 and 4 using nvcc use:-<br />
 nvcc <filename> && ./a.out<br />
-The matmul parameters can be changed from inside the files. The current are set to 4096*4096 X 4096*4096.<br />
+The matmul parameters can be changed from inside the files. The current are set to (4096 4096) X (4096 4096)<br />
 
 
 
