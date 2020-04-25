@@ -20,13 +20,6 @@
 
 using namespace std;
 
-struct timeval start, last;
-/*
-double diffTime(timeval start, timeval end)
-{
-  return (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) * 0.001;
-}
-*/
 __global__ void convertFp32ToFp16 (half *out, float *in, int n) {
    int idx = blockDim.x * blockIdx.x + threadIdx.x;
    if (idx < n) {
