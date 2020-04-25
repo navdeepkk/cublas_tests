@@ -7,6 +7,7 @@ There are 4 files described as follows:-<br />
 
 To run files 1 and 2:-<br />
 They are to be run using the profiler which can be download from https://developer.nvidia.com/gameworksdownload#?tx=$gameworks,developer_tools <br />
+Version 2019.5 of Nsight Systems is to be downloaded.<br />
 It can be installed using bash /path/to/run/file <br/>
 The GUI for the profiler can be found in /pah/to/root/of/profiler/host-linux-x64 <br/>
 The GUI can be fired up using bash nsight-nsys<br/>
