@@ -93,11 +93,18 @@ void gpu_blas_mmul(__half *A, __half *B, __half *C, int m, int k, int n) {
 		//k will be cols A, B.
 		//n will be rows B, cols in C.
 		int lda = k, ldb = k, ldc = n;
+	//-------------------------------peforming warmup runs-------------------------------------//
+		for(int i = 0; i < 500; i++){
+			// Do the actual multiplication
+	check_cuda_error(cublasGemmEx(handle, CUBLAS_OP_T, CUBLAS_OP_N, n, m, k, alpha, B, CUDA_R_16F, ldb, A, CUDA_R_16F, lda, beta, C, CUDA_R_16F, ldc, CUDA_R_32F, CUBLAS_GEMM_DEFAULT_TENSOR_OP));
+}
+	//-------------------------------------perform actual runs--------------------------------//
+
 		cudaEvent_t start, stop;
 		cudaEventCreate(&start);
 		cudaEventCreate(&stop);
 		cudaEventRecord(start, NULL);
-		int niter = 1000;
+		int niter = 10000;
 		for(int i = 0; i < niter; i++){
 			// Do the actual multiplication
 		//	cublasStat = cublasGemmEx(handle, CUBLAS_OP_T, CUBLAS_OP_N, n, m, k, alpha, B, CUDA_R_16F, ldb, A, CUDA_R_16F, lda, beta, C, CUDA_R_16F, ldc, CUDA_R_32F, CUBLAS_GEMM_DEFAULT_TENSOR_OP);
