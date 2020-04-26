@@ -99,7 +99,7 @@ void gpu_blas_mmul(__half *A, __half *B, __half *C, int m, int k, int n) {
 	check_cuda_error(cublasGemmEx(handle, CUBLAS_OP_T, CUBLAS_OP_N, n, m, k, alpha, B, CUDA_R_16F, ldb, A, CUDA_R_16F, lda, beta, C, CUDA_R_16F, ldc, CUDA_R_32F, CUBLAS_GEMM_DEFAULT_TENSOR_OP));
 }
 	//-------------------------------------perform actual runs--------------------------------//
-
+		cudaDeviceSynchronize();
 		cudaEvent_t start, stop;
 		cudaEventCreate(&start);
 		cudaEventCreate(&stop);
